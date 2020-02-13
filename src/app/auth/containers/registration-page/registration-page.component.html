@@ -1,1 +1,33 @@
-<p>registration-page works!</p>
+<div class="custom-user-registration-form">
+    <h3 id="logo">User Registration</h3>
+    <form [formGroup]="userRegistrationForm">
+        <div class="form-control">
+            <label>First Name:</label>
+            <input type="text" formControlName="firstName" required min="3" max="50">
+            <div class="hint">
+                First name should be greater than 3 character
+            </div>
+        </div>
+
+        <div class="form-control">
+            <label>Last Name:</label>
+            <input type="text" formControlName="lastName">
+        </div>
+        <div class="form-control">
+            <label>Age:</label>
+            <input type="number" formControlName="age" required>
+            <div class="hint">
+                Age should be greater than 0 and less than 100, Whole number with no 'e'
+            </div>
+        </div>
+        <div class="custom-action-wrapper">
+            <input class="reset" type="reset" value="Reset" (click)="resetForm()">
+            <input class="signup" type="button" value="Signup" (click)="onSubmit()"
+                [disabled]="!userRegistrationForm.valid">
+        </div>
+    </form>
+    <div id="output">
+        <h4>Output form data</h4>
+        <code>{{this.formValue || {} | json}}</code>
+    </div>
+</div>
